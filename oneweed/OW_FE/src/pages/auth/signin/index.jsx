@@ -26,7 +26,6 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-
   const onSubmit = async (data) => {
     dispatch(fetchUser(data));
   };

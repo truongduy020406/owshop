@@ -1,7 +1,10 @@
 import React from 'react';
+import Order from '../../../components/order';
 
 const SellerOrder = () => {
-  return <div>SellerOrder</div>;
+  return (
+    <Order />
+  );
 };
 
 export default SellerOrder;

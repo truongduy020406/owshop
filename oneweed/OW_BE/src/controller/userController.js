@@ -75,4 +75,41 @@ const login = async (req, res) => {
   }
 }
 
-module.exports = { register, login }
+const updateStore = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { namestore } = req.body; // Destructure namestore from req.body
+    const sql = "UPDATE user SET store_id = ? WHERE User_id = ?";
+    const [rows, fields] = await poolData.query(sql, [namestore, id]); // Pass parameters to the query
+    res.json({
+      data: rows,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal Server Error' }); // Add an appropriate error response
+  }
+};
+const getnamestore = async (req, res) => {
+  const id = req.params.id;
+console.log(id);
+  const q = "SELECT user.store_id FROM user WHERE user.User_id = ? ";
+
+  try {
+    const [rows] = await poolData.execute(q, [id]);
+
+    if (rows.length > 0) {
+      const product = rows[0];
+
+      res.status(200).json(product);
+    } else {
+      res.status(404).json({ message: 'Product not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
+
+
+module.exports = { register, login,updateStore,getnamestore }

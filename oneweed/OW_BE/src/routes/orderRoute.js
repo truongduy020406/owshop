@@ -1,6 +1,6 @@
 const express = require('express')
 const {
-  getOrderById,getAllOrder,CreateOrder,EditOrder,deleteOrder,getOrderByUserid
+  getAllOrder,CreateOrder,EditOrder,deleteOrder
 } = require('../controller/OderController')
 
 const router = express.Router()
@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/Orderad', getAllOrder)
 router.post('/creteOrder',CreateOrder)
 router.post('/editOrder',EditOrder)
-router.post('/deleteOrder',deleteOrder)
+router.post('/deleteOrder/:id',deleteOrder)
 // router.get('/Or',getOrderByUserid)
 
 

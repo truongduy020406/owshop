@@ -1,19 +1,32 @@
 import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import { UserButton } from '@clerk/clerk-react';
+import { UserButton, useUser } from '@clerk/clerk-react';
 import { Popover } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getnamestore } from '../../../service/user';
 
 const SellerHeader = () => {
-  const navigate = useNavigate();
+  const [namestore,setNameStore] =useState("")
+  const user  = useUser();
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchData = async () => {
+      const name = await getnamestore(user?.user?.id);
+      setNameStore(name);
+      console.log(namestore);
+    };
+  
+    fetchData();
+  }, [user?.user?.id]);
+  
   return (
     <div className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between py-3 bg-white shadow-md px-9">
       <h3
         className="text-2xl cursor-pointer"
         onClick={() => navigate('/seller')}
       >
-        Kênh người bán hàng
+        {namestore.store_id}
       </h3>
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">

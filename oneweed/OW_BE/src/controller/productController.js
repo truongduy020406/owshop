@@ -1,13 +1,25 @@
 const { poolData } = require("../database/index");
 
 const getProductById = async (req, res) => {
-  const productid = req.params.id;
-  const q = "SELECT * FROM product WHERE Product_Id =productid ";
+  const productId = req.params.id;
+  console.log(productId);
+
+  const q = "SELECT * FROM product WHERE Product_Id = ?";
 
   try {
-    const [rows] = await poolData.execute(q);
-    console.log(typeof JSON.parse(rows[0].images));
-  } catch (error) {}
+    const [rows] = await poolData.execute(q, [productId]);
+
+    if (rows.length > 0) {
+      const product = rows[0];
+
+      res.status(200).json(product);
+    } else {
+      res.status(404).json({ message: 'Product not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 const getAllProduct = async (req, res) => {
   const q = "SELECT * from product";

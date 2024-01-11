@@ -56,6 +56,8 @@ const menuItemsAcount = [
 ];
 
 const Header = () => {
+  const { products } = useSelector(state => state.card);
+console.log(products);
   const { t } = useTranslation();
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -69,6 +71,7 @@ const Header = () => {
   const navigate = useNavigate();
   // const { user, isLogged } = useSelector((state) => state.auth);
   const user = useUser();
+  const navi= useNavigate()
 
   const handleChangeLanguage = (lang) => {
     i18next.changeLanguage(lang);
@@ -94,9 +97,20 @@ const Header = () => {
     </div>
   );
   const popupCart = (
-    <div className="w-[300px] flex items-center justify-center h-[300px]">
-      <p>Giỏ hàng trống</p>{' '}
-    </div>
+    <>
+   <div className='mt-5 mb-5 px-5'>
+    {products.map((item,index)=>{
+      return(
+        <div  className="min-w-[250px] flex justify-between min-h-[20px]">
+        <h1>{item.name_pro}</h1>
+        <h1>{item.price}</h1>
+        <h1>{item.quality}</h1></div>
+      )
+    })}
+   </div>
+    <Link to={"/order/all"} className="text-center text-lg bg-red-700 text-white cursor-pointer h-8">
+      Mua hang
+    </Link></>
   );
 
   return (

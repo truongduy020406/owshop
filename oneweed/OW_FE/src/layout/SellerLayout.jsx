@@ -21,8 +21,8 @@ function getItem(label, key, icon, children, type) {
 const rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
 
 const items = [
-  getItem('Vận chuyển', 'sub1', <MailOutlined />, [
-    getItem('Quản lý vận chuyển', '/seller/transportManager'),
+  getItem('Tên cửa hàng', 'sub1', <MailOutlined />, [
+    getItem('Quản lý Tên cửa hàng', '/seller/transportManager'),
   ]),
   getItem('Quản lý đơn hàng', 'sub2', <AppstoreOutlined />, [
     getItem('Tất cả', '/seller/order/all'),

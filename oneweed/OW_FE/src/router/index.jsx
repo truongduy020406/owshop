@@ -1,5 +1,6 @@
 import CategoryPage from '../pages/category';
 import HomePage from '../pages/home';
+import Payment from '../pages/payment/Payment';
 import SellerPage from '../pages/seller';
 import SettingStore from '../pages/seller/SettingStore';
 import ProductPage from '../pages/seller/product';
@@ -18,6 +19,10 @@ export const publicRoutes = [
   {
     path: '/category/:id',
     element: <CategoryPage />,
+  },
+  {
+    path: '/order/all',
+    element: <Payment />,
   },
 ];
 
@@ -61,4 +66,5 @@ export const sellerRoutes = [
     path: '/seller/setting-store',
     element: <SettingStore />,
   },
+  
 ];

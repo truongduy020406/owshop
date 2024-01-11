@@ -19,6 +19,7 @@ export const register = (user) => API.post('/user/signup', user);
 
 // ** -------- PRODUCT API -------- **
 export const getAllProduct = () => API.get('/product');
+export const getProductbyID = (id) => API.get(`/product/${id}`);
 
 // ** -------- CATEGORY API -------- **
 
@@ -26,5 +27,6 @@ export const getCategories = () => API.get('/categories');
 export const getSubCategory = (id) => API.get(`subcategory/${id}`);
 export const getProductBySubcategory = (id) =>
   API.get(`/product/subcategory/${id}`);
+// ** -------- ORDER API -------- **
 
 // axios.interceptors.request.use(authRequestInterceptor);

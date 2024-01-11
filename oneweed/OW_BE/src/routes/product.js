@@ -12,6 +12,7 @@ router.get('/subcategory/:id', getProductBySubCategory)
 router.post('/creteProduct', upLoad.single('img'),CreateProduct)
 router.post('/editProduct/:id',EditProduct)
 router.post('/deleteProduct/:id',deleteProduct)
+router.get('/:id',getProductById)
 
 
 module.exports =  router ;

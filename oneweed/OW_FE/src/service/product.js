@@ -1,5 +1,4 @@
 import request from ".";
-
 export async function getAllProduct(params) {
   return request(`/product`, {
     method: "GET",
@@ -7,9 +6,12 @@ export async function getAllProduct(params) {
   });
 }
 export async function getProductById(id) {
+
   return request(`/product/${id}`, {
+
     method: "GET",
   });
+
 }
 
 export async function createProduct(data) {

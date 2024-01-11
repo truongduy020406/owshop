@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ item }) => {
+  console.log(item);
+  const handleDetail = () =>{
+    Product_id
+  }
   return (
     <div
       className="bg-white  hover:shadow-md hover:-translate-y-1 transition-transform duration-300 ease-in-out relative"
@@ -29,6 +34,7 @@ const ProductCard = ({ item }) => {
               <span className="text-xs">₫</span>
               <span>{item.price.toLocaleString('en-US')}</span>
             </div>
+            <Link to={`/product/${item.Product_id}`}>Mua hàng</Link>
             <div>
               <span className="text-sm text-gray-500">{item.sold}</span>
             </div>
